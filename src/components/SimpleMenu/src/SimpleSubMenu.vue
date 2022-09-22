@@ -78,7 +78,7 @@
       const { t } = useI18n();
       const { prefixCls } = useDesign('simple-menu');
 
-      const getShowMenu = computed(() => !props.item?.meta?.hideMenu);
+      const getShowMenu = computed(() => !props.item?.meta?.hide_menu);
       const getIcon = computed(() => props.item?.icon);
       const getI18nName = computed(() => t(props.item?.name));
       const getShowSubTitle = computed(() => !props.collapse || !props.parent);

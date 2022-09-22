@@ -118,11 +118,11 @@ export const useUserStore = defineStore({
           router.addRoute(PAGE_NOT_FOUND_ROUTE as unknown as RouteRecordRaw);
           permissionStore.setDynamicAddedRoute(true);
         }
-        goHome && (await router.replace(userInfo?.homePath || PageEnum.BASE_HOME));
+        goHome && (await router.replace(userInfo?.home_path || PageEnum.BASE_HOME));
       }
       return userInfo;
     },
-    async getUserInfoAction(): Promise<UserInfo | null> {
+    async getUserInfoAction(): Promise<GetUserInfoModel | null> {
       if (!this.getToken) return null;
       const userInfo = await getUserInfo();
       const { roles = [] } = userInfo;
@@ -133,6 +133,7 @@ export const useUserStore = defineStore({
         userInfo.roles = [];
         this.setRoleList([]);
       }
+      // @ts-ignore
       this.setUserInfo(userInfo);
       return userInfo;
     },
@@ -150,7 +151,7 @@ export const useUserStore = defineStore({
       this.setToken(undefined);
       this.setSessionTimeout(false);
       this.setUserInfo(null);
-      goLogin && router.push(PageEnum.BASE_LOGIN);
+      goLogin && (await router.push(PageEnum.BASE_LOGIN));
     },
 
     /**

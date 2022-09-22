@@ -6,7 +6,7 @@ export interface RouteItem {
   name?: string;
   alias?: string | string[];
   redirect?: string;
-  caseSensitive?: boolean;
+  case_sensitive?: boolean;
   children?: RouteItem[];
 }
 

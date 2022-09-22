@@ -15,9 +15,9 @@ import { defHttp } from '/@/utils/http/axios';
 enum Api {
   AccountList = '/system/getAccountList',
   IsAccountExist = '/system/accountExist',
-  DeptList = '/system/getDeptList',
+  DeptList = '/system/dept',
   setRoleStatus = '/system/setRoleStatus',
-  MenuList = '/system/getMenuList',
+  MenuList = '/system/menu',
   RolePageList = '/system/getRoleListByPage',
   GetAllRoleList = '/system/getAllRoleList',
 }

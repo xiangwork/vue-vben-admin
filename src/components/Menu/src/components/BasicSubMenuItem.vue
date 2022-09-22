@@ -36,10 +36,10 @@
     setup(props) {
       const { prefixCls } = useDesign('basic-menu-item');
 
-      const getShowMenu = computed(() => !props.item.meta?.hideMenu);
+      const getShowMenu = computed(() => !props.item.meta?.hide_menu);
       function menuHasChildren(menuTreeItem: MenuType): boolean {
         return (
-          !menuTreeItem.meta?.hideChildrenInMenu &&
+          !menuTreeItem.meta?.hide_children_in_menu &&
           Reflect.has(menuTreeItem, 'children') &&
           !!menuTreeItem.children &&
           menuTreeItem.children.length > 0

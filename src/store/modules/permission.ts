@@ -194,7 +194,7 @@ export const usePermissionStore = defineStore({
           routes = routes.filter(routeRemoveIgnoreFilter);
           // 对菜单进行排序
           menuList.sort((a, b) => {
-            return (a.meta?.orderNo || 0) - (b.meta?.orderNo || 0);
+            return (a.meta?.sort || 0) - (b.meta?.sort || 0);
           });
 
           // 设置菜单列表
@@ -245,7 +245,7 @@ export const usePermissionStore = defineStore({
           routes = [PAGE_NOT_FOUND_ROUTE, ...routeList];
           break;
       }
-
+      console.log(routes);
       routes.push(ERROR_LOG_ROUTE);
       patchHomeAffix(routes);
       return routes;

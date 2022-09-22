@@ -1,6 +1,6 @@
 import type { Menu } from '/@/router/types';
 import type { Ref } from 'vue';
-import { watch, unref, ref, computed } from 'vue';
+import { computed, ref, unref, watch } from 'vue';
 import { useRouter } from 'vue-router';
 import { MenuSplitTyeEnum } from '/@/enums/menuEnum';
 import { useThrottleFn } from '@vueuse/core';
@@ -39,7 +39,7 @@ export function useSplitMenu(splitType: Ref<MenuSplitTyeEnum>) {
       if (unref(splitNotLeft) || unref(getIsMobile)) return;
 
       const { meta } = unref(currentRoute);
-      const currentActiveMenu = meta.currentActiveMenu as string;
+      const currentActiveMenu = meta.current_active_menu as string;
       let parentPath = await getCurrentParentPath(path);
       if (!parentPath) {
         parentPath = await getCurrentParentPath(currentActiveMenu);
@@ -98,9 +98,7 @@ export function useSplitMenu(splitType: Ref<MenuSplitTyeEnum>) {
 
     // split-top
     if (unref(getSpiltTop)) {
-      const shallowMenus = await getShallowMenus();
-
-      menusRef.value = shallowMenus;
+      menusRef.value = await getShallowMenus();
       return;
     }
   }

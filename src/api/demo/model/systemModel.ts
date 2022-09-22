@@ -18,7 +18,7 @@ export type DeptParams = {
 };
 
 export type MenuParams = {
-  menuName?: string;
+  name?: string;
   status?: string;
 };
 
@@ -35,16 +35,16 @@ export interface AccountListItem {
 
 export interface DeptListItem {
   id: string;
-  orderNo: string;
-  createTime: string;
+  sort: string;
+  created_at: string;
   remark: string;
   status: number;
 }
 
 export interface MenuListItem {
   id: string;
-  orderNo: string;
-  createTime: string;
+  sort: string;
+  created_at: string;
   status: number;
   icon: string;
   component: string;

@@ -43,7 +43,7 @@ const isRoleMode = () => {
 const staticMenus: Menu[] = [];
 (() => {
   menuModules.sort((a, b) => {
-    return (a.orderNo || 0) - (b.orderNo || 0);
+    return (a.sort || 0) - (b.sort || 0);
   });
 
   for (const menu of menuModules) {
@@ -54,10 +54,12 @@ const staticMenus: Menu[] = [];
 async function getAsyncMenus() {
   const permissionStore = usePermissionStore();
   if (isBackMode()) {
-    return permissionStore.getBackMenuList.filter((item) => !item.meta?.hideMenu && !item.hideMenu);
+    return permissionStore.getBackMenuList.filter(
+      (item) => !item.meta?.hide_menu && !item.hide_menu,
+    );
   }
   if (isRouteMappingMode()) {
-    return permissionStore.getFrontMenuList.filter((item) => !item.hideMenu);
+    return permissionStore.getFrontMenuList.filter((item) => !item.hide_menu);
   }
   return staticMenus;
 }

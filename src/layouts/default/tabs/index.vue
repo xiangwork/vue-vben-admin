@@ -73,7 +73,7 @@
       const { getShowQuick, getShowRedo, getShowFold } = useMultipleTabSetting();
 
       const getTabsState = computed(() => {
-        return tabStore.getTabList.filter((item) => !item.meta?.hideTab);
+        return tabStore.getTabList.filter((item) => !item.meta?.hide_tab);
       });
 
       const unClose = computed(() => unref(getTabsState).length === 1);
@@ -94,8 +94,8 @@
         }
 
         const { path, fullPath, meta = {} } = route;
-        const { currentActiveMenu, hideTab } = meta as RouteMeta;
-        const isHide = !hideTab ? null : currentActiveMenu;
+        const { current_active_menu, hide_tab } = meta as RouteMeta;
+        const isHide = !hide_tab ? null : current_active_menu;
         const p = isHide || fullPath || path;
         if (activeKeyRef.value !== p) {
           activeKeyRef.value = p as string;

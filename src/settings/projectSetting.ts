@@ -15,16 +15,16 @@ import { primaryColor } from '../../build/config/themeConfig';
 // ! You need to clear the browser cache after the change
 const setting: ProjectConfig = {
   // Whether to show the configuration button
-  showSettingButton: true,
+  showSettingButton: false,
 
   // Whether to show the theme switch button
-  showDarkModeToggle: true,
+  showDarkModeToggle: false,
 
   // `Settings` button position
   settingButtonPosition: SettingButtonPositionEnum.AUTO,
 
   // Permission mode
-  permissionMode: PermissionModeEnum.ROUTE_MAPPING,
+  permissionMode: PermissionModeEnum.BACK,
 
   // Permission-related cache is stored in sessionStorage or localStorage
   permissionCacheType: CacheTypeEnum.LOCAL,

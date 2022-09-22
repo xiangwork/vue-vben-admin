@@ -58,8 +58,8 @@
         const cur = routeMatched?.[routeMatched.length - 1];
         let path = currentRoute.value.path;
 
-        if (cur && cur?.meta?.currentActiveMenu) {
-          path = cur.meta.currentActiveMenu as string;
+        if (cur && cur?.meta?.current_active_menu) {
+          path = cur.meta.current_active_menu as string;
         }
 
         const parent = getAllParentPath(menus, path);
@@ -101,12 +101,12 @@
           if (!meta) {
             return !!name;
           }
-          const { title, hideBreadcrumb, hideMenu } = meta;
-          if (!title || hideBreadcrumb || hideMenu) {
+          const { title, hide_breadcrumb, hide_menu } = meta;
+          if (!title || hide_breadcrumb || hide_menu) {
             return false;
           }
           return true;
-        }).filter((item) => !item.meta?.hideBreadcrumb);
+        }).filter((item) => !item.meta?.hide_breadcrumb);
       }
 
       function handleClick(route: RouteLocationMatched, paths: string[], e: Event) {

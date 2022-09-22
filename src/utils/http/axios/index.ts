@@ -63,10 +63,11 @@ const transform: AxiosTransform = {
     let timeoutMsg = '';
     switch (code) {
       case ResultEnum.TIMEOUT:
+      case ResultEnum.ERROR:
         timeoutMsg = t('sys.api.timeoutMessage');
         const userStore = useUserStoreWithOut();
         userStore.setToken(undefined);
-        userStore.logout(true);
+        userStore.logout(true).then((r) => console.log(r));
         break;
       default:
         if (message) {
@@ -111,7 +112,11 @@ const transform: AxiosTransform = {
     } else {
       if (!isString(params)) {
         formatDate && formatRequestDate(params);
-        if (Reflect.has(config, 'data') && config.data && (Object.keys(config.data).length > 0 || config.data instanceof FormData)) {
+        if (
+          Reflect.has(config, 'data') &&
+          config.data &&
+          (Object.keys(config.data).length > 0 || config.data instanceof FormData)
+        ) {
           config.data = data;
           config.params = params;
         } else {
@@ -194,6 +199,8 @@ const transform: AxiosTransform = {
     // 添加自动重试机制 保险起见 只针对GET请求
     const retryRequest = new AxiosRetry();
     const { isOpenRetry } = config.requestOptions.retryRequest;
+    // @ts-ignore
+    // @ts-ignore
     config.method?.toUpperCase() === RequestEnum.GET &&
       isOpenRetry &&
       // @ts-ignore

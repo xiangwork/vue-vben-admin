@@ -38,7 +38,7 @@ export interface Menu {
 
   children?: Menu[];
 
-  orderNo?: number;
+  sort?: number;
 
   roles?: RoleEnum[];
 
@@ -46,11 +46,11 @@ export interface Menu {
 
   tag?: MenuTag;
 
-  hideMenu?: boolean;
+  hide_menu?: boolean;
 }
 
 export interface MenuModule {
-  orderNo?: number;
+  sort?: number;
   menu: Menu;
 }
 
